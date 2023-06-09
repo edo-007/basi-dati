@@ -12,15 +12,16 @@ Ogni dipartimento controlla un certo numero di __PROGETTI__. Ciascun progetto ha
 
 Occorre memorizzare il _codice scale_, _l’indirizzo_, lo _stipendio_, il _sesso_ e la _data di nascita_ di ciascun __DIPENDENTE__. Ciascun dipendente lavora per un solo dipartimento ma può essere impiegato in più di un progetto. Occorre gestire il numero di ore settimanali che ciascun dipendente impiega in ciascun progetto assegnatoli. Occorre gestire anche il supervisore di ciascun dipendente.
 
-
+&nbsp;
 
 > Le **entità** sono specifici oggetti o cose del mini-mondo che sono rappresentate del database. Per esempio i DIPENDENTI, i DIPARTIMENTI, i PROGETTI. Uno specifico dipendente (e.g. Mario Rossi) viene definito un’istanza dell’entità DIPENDENTI.
 
 > Gli **attributi** sono proprietà usate per descrivere un’entità. Per esempio i DIPENDENTI possono avere un Nome, un Codice Fiscale, un Indirizzo, etc...  
 Ciascun attributo ha un insieme di valori (o tipo di dati) associato ad esso. Esempio: intero, stringa, data, ...
 
-> Un **istanza** di un’entità avrà un valore per ciascuno degli attributi. Ad esempio uno speci co dipendente può avere Nome=‘Mario Rossi’,  
-CF=‘MRRSSU73D24D548V’, Indirizzo=‘Via Paradiso 12’, ...
+> Un **istanza** di un’entità avrà un valore per ciascuno degli attributi. Ad esempio uno speci co dipendente può avere Nome=‘Mario Rossi’, CF=‘MRRSSU73D24D548V’, Indirizzo=‘Via Paradiso 12’, ...
+
+&nbsp;
 
 * * * 
 
@@ -41,21 +42,24 @@ Un’istanza può avere valori multipli per l’attributo. Ad esempio, TitoloDiS
 
 - Le Entità vengono anche chiamate Tipi di Entità ed ogni elemento in questa entità viene chiamato Istanza dell’Entità
 
-- In ogni Entità esiste un *Attributo che il cui valore è distinto (cioè unico) per ogni singola istanza* (elemento) dell’Entità.
-    > Un Attributo con questa caratteristica è detto **Attributo chiave** Il valore dell’Attributo chiave è utile per identi care univocamente una singola istanza dell’Entità
+- In ogni Entità esiste un *Attributo che il cui valore è distinto (cioè unico) per ogni singola istanza* (elemento) dell’Entità.  
+
+> Un Attributo con questa caratteristica è detto **Attributo chiave** Il valore dell’Attributo chiave è utile per identificare univocamente una singola istanza dell’Entitàidenti care
 
 * * *
 
+\pagebreak
 
-### Associazioni
+## Associazioni - 1
 
 Un’**associazione** mette in riferimento *due o più entità* con uno specifico significato.  
 Ogni **istanza di associazione** mette in riferimento due o più istanze di entità.  
 
-Ad esempio, DIPENDENTE Mario Rossi *lavora* sul PROGETTO Database, oppure il DIPENDENTE Mario Rossi *dirige* il DIPARTIMENTO Database.  
+Ad esempio, DIPENDENTE Mario Rossi *lavora* sul PROGETTO, oppure il DIPENDENTE Mario Rossi *dirige* il DIPARTIMENTO.
 
 Le associazioni si indicano generalmente con un verbo e le entità che vengono messe in riferimento si dice partecipano all’associazione. Ad esempio, DIPENDENTE e PROGETTO partecipano all’associazione LAVORA SU.   
-**Grado di un’ associazione** = _# entità partecipati_. 
+**Grado di un’ associazione** = _# entità partecipati_.  
+
 > LAVORA SU è un’associazione binaria (grado 2).
 
 
@@ -68,14 +72,14 @@ Più di un’associazione può avere le stesse entità come partecipanti. Ad ese
 
 Un’entità è definita **debole** se `non possiede un attributo chiave`.  
 
-Le sue istanze sono identi cate da una combinazione di:  
+Le sue istanze sono identificate da una combinazione di:  
 
 > Valore di una **chiave parziale** dell’entità debole;
 
 > **Istanza dell’entità identificante** a cui è associata (tramite l’associazione identificante).  
 
 **Esempio**:  
-Le istanze dell’entità PARENTE possono essere identi cate dal Nome e dalla DataDiNascita, e dall’istanza dell’entità DIPENDENTE a cui sono associate. PARENTE è quindi un’entità debole con DIPENDENTE come entità identificante attraverso l’associazione identificante PARENTE DI.
+Le istanze dell’entità PARENTE possono essere identificate dal Nome e dalla DataDiNascita, e dall’istanza dell’entità DIPENDENTE a cui sono associate. PARENTE è quindi un’entità debole con DIPENDENTE come entità identificante attraverso l’associazione identificante PARENTE DI.
 
 ### Vincoli sulle Associazioni
 Vincoli sui rapporti di cardinalità:
@@ -108,38 +112,50 @@ Nei diagrammi ER è necessario specificare i nomi dei ruoli che riveste l’enti
 ### Vincoli Strutturali
 *un modo per esprimere la semantica delle associazioni*
 
+
+## Associazioni - 2
 **Rapporto di Cardinalità**   (di associazioni binarie)
 > 1:1, 1:N, N:1, oppure M:N  
 
 > MOSTRATO INDICANDO IL _NUMERO APPROPRIATO_ SUL SEGMENTO TRA ENTITÀ ED ASSOCIAZIONE
 
+
+&nbsp;
 **Vincolo di partecipazione** (su ciascuna entità partecipante)
 > Totale (*dipendenza di esistenza*) oppure parziale
 
 > MOSTRATO UTILIZZANDO UN **SEGMENTO DOPPIO**  
+
 ### Notazione alternativa (min, max)
 • Specificata su tutte le partecipazioni di un’entità **E** ad un’associazione **R**.
-• Specica che ciascuna istanza e dell’entità E partecipa in `almeno min` ed al `massimo max` istanze di associazione   dell’associazione R.
+• Specica che ciascuna istanza e dell’entità E partecipa in `almeno min` ed al `massimo max` istanze di associazione   dell’associazione R.  d
+
 > Default (no vincoli): min = 0, max = n
 
 > Derivata dalla conoscenza dei vincoli del mini-mondo.
 
 #### Esempio Notazione (min, max)
-_Un dipartimento ha esattamente un direttore e un dipendente può dirigere (al massimo) un solo dipartimento._  
-• Specificare (0,1) per la partecipazione di DIPENDENTE in DIRIGE
-• Specificare (1,1) per la partecipazione di DIPARTIMENTO in DIRIGE
-> .
->   |DIPENDENTE| ---`(0,1)`-----< __DIRIGE__ >----`(1,1)`--- |DIPARTINENTO|  
-> .
+_Un dipartimento ha esattamente un direttore e un dipendente può dirigere (al massimo) un solo dipartimento._    
+• Specificare (0,1) per la partecipazione di DIPENDENTE in DIRIGE  
+• Specificare (1,1) per la partecipazione di DIPARTIMENTO in DIRIGE    
+
+&nbsp;
+
+>   |DIPENDENTE| ----`(0,1)`-----< __DIRIGE__ >----`(1,1)`--- |DIPARTINENTO|  
+
+&nbsp;
 
 <br>
 
 _Un dipendente può lavorare per uno ed uno solo dipartimento ma un dipartimento può avere un numero qualsiasi di dipendenti._  
-• Specificare (1,1) per la partecipazione di DIPENDENTE in LAVORA PER
-• Specificare (0,n) per la partecipazione di DIPARTIMENTO in LAVORA PER
-> .
->   |DIPENDENTE| ---`(1,1)`-----< __LAVORA PER__ >----`(0,N)`--- |DIPARTINENTO|  
-> .
+• Specificare (1,1) per la partecipazione di DIPENDENTE in LAVORA PER  
+• Specificare (0,n) per la partecipazione di DIPARTIMENTO in LAVORA PER  
+
+&nbsp;
+
+>   |DIPENDENTE| ----`(1,1)`-----< __LAVORA PER__ >----`(0,N)`--- |DIPARTINENTO|    
+
+&nbsp; 
 
 ### Associazioni di grado superiore
 
@@ -150,24 +166,20 @@ In generale, `1 associazione n-aria` __!=__  `n associazioni binarie`
 * * *
 #### Data Modeling Tools
 
- DISEGNO
-- Notazione concettuale poco signi cativa
+DISEGNO
+- Notazione concettuale poco significativa
 - Per evitare problemi di estetica e di algoritmi per la disposizione, sono disponibili essenzialmente solo rettangoli
-e linee e non rappresentano niente più che associazioni e vincoli su chiave primaria-esterna nelle tabelle risultanti.
+e linee che rappresentano niente più che associazioni e vincoli su chiave primaria-esterna nelle tabelle risultanti.  
+METODOLOGIA
+- Scarso supporto interno e pochi strumenti per la verifica dei diagrammi o per suggerimenti.
 
- METODOLOGIA
-- Scarso supporto interno
-- Scarsi strumenti per la veri ca dei diagrammi o per suggerimenti.
 * * *
 
 ### Problemi con il modello ER
 
-Non supporta astrazioni molto utili quali:
-
-> Sottoclassi  
-> Specializzazione/generalizzazione.  
+Non supporta astrazioni molto utili quali Sottoclassi e Specializzazione/Generalizzazione
 
 Modello EER  (_Extended Entity-Relationship_)  
-> Incorpora associazioni di sottoclasse 
-> Incorpora gerarchie di Specializzazione/Generalizzazione 
+
+> Incorpora associazioni di sottoclasse  `+` gerarchie di Specializzazione/Generalizzazione 
 
