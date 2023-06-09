@@ -26,14 +26,14 @@ CF=‘MRRSSU73D24D548V’, Indirizzo=‘Via Paradiso 12’, ...
 
 ### Tipi di Attributi
 
-- **Semplici:** 
+- **Semplici:**  
 Ciascuna istanza ha un valore singolo, atomico per l’attributo. Ad esempio ( _CF, Sesso, ..._)
 
-- **Composti ( )**
+- **Composti ( )**  
 L’attributo può essere composto da varie componenti. Per esempio, Indirizzo (Via/Viale/Piazza, nome, numero, cap, paese) oppure Nome
 (Nome proprio, Cognome). La composizione può anche formare gerarchie in cui alcune componenti sono loro stesse composte.
 
-- **Multivalore { }**
+- **Multivalore { }**  
 Un’istanza può avere valori multipli per l’attributo. Ad esempio, TitoloDiStudio. Denotati come {TitoloDiStudio}.
 
 
