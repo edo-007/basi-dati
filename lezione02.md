@@ -1,53 +1,58 @@
 
 
-# Concetti ed Architetture
+# Concetti ed Architetture ( lezione - 02 )
 
 
 **Modelli dei dati**  
 Insieme di concetti per descrivere la struttura di un database ed i vincoli da rispettare  
 
 **Operazioni del modello dei dati**  
-Operazioni per specificare recuperi ed aggionramenti del database in riferimento ai concetti del modello dei dati. Op. di base + Op definite da utente.
+Operazioni per recuperi ed aggionramenti del database in riferimento ai concetti del modello dei dati.  
+(`Op. di base + Op. definite da utente.`)
 
-## Categorie modello dei dati
-**Concettuale** (alto-livello, _semantico_)
+## Categorie modello dei dati 
+**Concettuale** (alto-livello, _semantico_)  
+
 > Concetti vicini al mondo in cui gli utenti percepiscono i dati. (es. entità obj)
 
-**Fisico** (basso-livello, interno)
+**Fisico** (basso-livello, interno)  
+
 > Concetti che descrivono dettagliatamente come i dati sono memorizzati nella macchina.  
 
 **Implementabili** (rappresentazionali)
-> Concetti che possono essere comresi dagli utenti finali ma che non sono troppo lontani dal mondo in cui i dati sono organizzati nella macchina.
+
+> Concetti che possono essere compresi dagli utenti finali ma che non sono troppo lontani dal mondo in cui i dati sono organizzati nella macchina.
 
 ## Schema Vs Istanze
 
 **Schema del Database:** Descrizione del database (struttura e vincoli)  
+
 > **Diagramma di Schema:** Visualizzazione a diagramma di uno schema o di un suo qualche aspetto  
 > **Costrutto dello Schema:** Componente dello schema o un oggetto all' interno di esso (STUDENTI, CORSI)  
 
-**Istanza del Database:** I dati veri e propri contenuti del database in un particolare momento del tempo. Chiamata anche stato o occorrenza
+**Istanza del Database:** I dati contenuti nella base in un particolare momento del tempo. Anche `stato o occorrenza`
 
 
 ## Schema Vs Stato
 
 **Stato del Database:** Contenuto del DB in un particolare momento (solitamente ora)  
+
 > **Stato Iniziale:** Stato del database appena caricato  
 > **Stato Valido:** Stato che soddisfa strutture e vincoli del database  
 
-
 Lo _schema_ del database non cambia molto spesso. Lo _stato_ del database cambia ogni volta che il database viene aggiornato.
 
-schema = intensione  
-stato  =  estensione
+> > >  **[ Schema = Intensione ]**  **[ Stato  =  Estensione ]** 
 
-<hr> 
+* * *
 
 ## Architettura a 3 livelli
 
-• Proposta per supportare le caratteristiche dei DBMS di:
-> - Indipendenza tra programmi e dati  
-> - Supporto di viste multiple d’utente  
-> - Uso di un catalogo per memorizzare la descrizione (schema) del database  
+• Proposta per supportare le caratteristiche dei DBMS di:  
+
+> Indipendenza tra programmi e dati.
+> Supporto di viste multiple d’utente.  
+> Uso di un catalogo per memorizzare la descrizione (schema) del database.  
 
 • Si vuole __separare__ _l’applicazione_ dalla _base di dati fisica_.
 
@@ -60,8 +65,9 @@ stato  =  estensione
 
 **Schema esterno** al livello esterno, per descrivere le varie viste utente. Solitamente utilizza lo stesso modello dei dati del livello concettuale.
 
-• È necessaria una *mappatura* tra i livelli di schemi per trasformare le richieste ed i dati.  
-• I programmi applicativi fanno riferimento ad uno schema esterno e sono mappati dal DBMS sullo schema interno per l’esecuzione.
+- È necessaria una *mappatura* tra i livelli di schemi per trasformare le richieste ed i dati.  
+- I programmi applicativi fanno riferimento ad uno schema esterno e sono mappati dal DBMS sullo schema interno per    
+  l’esecuzione.
 
 <hr>
 
@@ -82,6 +88,7 @@ solamente allo schema esterno.
 ## Linguaggi dei DBMS
 
 **Data Definition Language (DDL)**: 
+
 > Usato dal DBA e dai progettisti per specificare lo `schema logico` del database.   
   In molti DBMS, il DDL è _utilizzato anche per definire gli schemi interno ed esterno_. 
   
@@ -122,15 +129,18 @@ _modificare_ gli schemi o i percorsi di accesso ai dati
 ### Data dictionary / repository  
 Store schema descriptions and other information such as *design decisions*, *application program descriptions*, *user information*, *usage standards*, etc.  
 
-- `Active data dictionary` is accessed by DBMS software and users/DBA.  
-- `Passive data dictionary` is accessed by users/DBA only.  
-
+- `Active data dictionary` is accessed by DBMS software and users/DBA. 
+- `Passive data dictionary` is accessed by users/DBA only.
 - **Application Development Environments and CASE (computer-aided software engineering) tools:**
+
 > - Examples – Power builder (Sybase), Builder (Borland) 
 
-<hr>
+\pagebreak
+&nbsp;
+&nbsp;
 
-### Architetture Centralizzate e Client – Server  
+
+## Architetture Centralizzate e Client – Server  
 
 **DBMS Centralizzati**: 
 > tutto le funzionalità sono raccolte in un singolo sistema; i programmi del DBMS, i programmi applicativi, le interfacce utente ed il database stesso sono su un unico computer.
@@ -138,34 +148,38 @@ Store schema descriptions and other information such as *design decisions*, *app
 **Architetture Client – Server di base**
 
 Server Specializzati   
+
 > • `Printer Servers`  
 > • `Web Servers`  
 > • `E-mail Servers`    
 
 Clients
-> • Forniscono _interfacce appropriate_ ed una _versione client_ del sistema per accedere ed utilizzare le risorse del server.  
+
+> • Forniscono _interfacce appropriate_ ed una _versione client_ del sistema per accedere alle le risorse del server.  
 > • macchine senza disco _oppure_ dei PC/Workstation con solamente il programma client.    
 > • Sono connessi ai server attraverso qualche tipo di _rete_ (LAN: local area network, wireless network, etc.)  
 
 DBMS Server
+
 > • Forniscono i servizi di _interrogazione e di transazioni_ ai client.(detti anche _transaction servers_)
 
-### Architetture Client – Server a due livelli per DBMS
+## Architetture Client – Server a due livelli per DBMS
 
-• L' **interfaccia utente e applicativi** sono eseguiti sul client.  
+- L' **interfaccia utente e applicativi** sono eseguiti sul client.  
 
-• L’__interfaccia ODBC__ (Open Database Connectivity) fornisce una __API__ (`Application Program Interface`) che consente ai programmi lato client di effettuare chiamate al DBMS. La maggior parte dei produttori di DBMS forniscono i driver ODBC.  
+- L’__interfaccia ODBC__ (Open Database Connectivity) fornisce una __API__ (`Application Program Interface`) che consente ai programmi lato client di effettuare chiamate al DBMS. La maggior parte dei produttori di DBMS forniscono i driver ODBC.  
 
-• Un programma lato client può **connettersi a più DBMS**.
+- Un programma lato client può **connettersi a più DBMS**.
 
 _In qualche DBMS alcune funzionalità proprie del server sono trasferite ai client, come ad esempio le funzioni di dizionario dei dati, di ottimizzazione e recovery. In questo caso il server viene indicato solamente come Data Server._
 
 * * *
 
-### Architetture Client – Server a tre livelli
- ( *per le applicazioni Web* )
+## Architetture Client – Server a tre livelli  
+( *per le applicazioni Web* )
 
 Contiene un livello intermedio chiamato **Application Server o Web Server**:
+
 > Contiene il software per le connessioni web, le regole e la logica (vincoli) dell’applicazionche accede ai dati necessari nel server DBMS.  
 > Agisce come tramite per mandare i dati parzialmente processati tra server e client del DBMS.
 
@@ -175,23 +189,22 @@ Contiene un livello intermedio chiamato **Application Server o Web Server**:
 ### Classificazione dei DBMS
 
 Basata sul **modello dei dati utilizzato**:
-> • Legacy: Reticolari, Gerarchici  
-> • Tradizionali: Relazionali  
-> • Emergenti: NOSQL, Key-Value, Document.  
+
+> • `Legacy`: Reticolari, Gerarchici  
+• `Tradizionali`: Relazionali  
+• `Emergenti`: NOSQL, Key-Value, Document.  
 
 **Altre classificazioni**:  
-• `SINGLE-user` (usati tipicamente su PC) **vs**. `MULTI-user` (la maggior parte dei DBMS).  
-• `Centralizzati` (usano un singolo computer con un database) **vs**. `Distribuiti` (usano più computer e più database).  
 
-> Distributed Database Systems have now come to be known as client server based database systems because they do not support a totally distributed environment, but rather a set of database servers supporting a set of clients.  
+> • `SINGLE-user` (usati tipicamente su PC) **vs**. `MULTI-user` (la maggior parte dei DBMS).  
+> • `Centralizzati` (singolo computer con un database) **vs**. `Distribuiti` (più computer e più database).  
+
+`Distributed Database Systems` have now come to be known as client server based database systems because they do not support a totally distributed environment, but rather a set of database servers supporting a set of clients.  
 
 
-<br><br>
+**Ambienti Distribuiti** 
 
-**Ambienti Distribuiti**  
-• DBMS Distribuiti Omogenei  
-• DBMS Distribuiti Disomogenei  
-• Sistemi Multi-Database  
+> > • DBMS Distribuiti Omogenei   • DBMS Distribuiti Disomogenei   • Sistemi Multi-Database  
 
 
 
